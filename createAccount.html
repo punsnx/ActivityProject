@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account</title>
+  </head>
+  <body>
+    <header>
+      <div id="containHeader">
+        <h1>
+          <i>Create your<br />Account</i>
+        </h1>
+        <a href="welcome.html">Welcome/Login</a>
+        <br />
+        <a href="index.html">Home</a>
+      </div>
+    </header>
+    <section>
+      <nav></nav>
+
+      <div id="containAuthSection">
+        <form id="authForm" name="authPageForm">
+          <label for="authEmail">Enter Email</label>
+          <input type="text" id="authEmail" placeholder="Email" />
+          <br />
+          <label for="authUsername">Enter Username</label>
+          <input type="text" id="authUsername" placeholder="Username" />
+          <br />
+          <label for="authPassword">Enter Password</label>
+          <input type="password" id="authPassword" placeholder="Password" />
+          <br />
+          <label for="authCFPassword">Enter Password Again</label>
+          <input type="password" id="authCFPassword" placeholder="Password" />
+          <br />
+          <input type="submit" value="Create Account" id="SubmitAuth" />
+          <br />
+          <label id="haveAccountLoginLabel">Already have an account? </label
+          ><a id="haveAccountLogin" href="welcome.html">Sign in</a>
+          <br />
+          <hr />
+          <label>or continue with</label>
+        </form>
+        <div class="contain3PartyAuthButton">
+          <div class="bt_welcome_googleAuth">
+            <button>Continue with Google</button>
+          </div>
+          <div class="bt_welcome_googleAuth">
+            <button>Continue with Facebook</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

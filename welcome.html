@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+  </head>
+  <body>
+    <header>
+      <div id="containHeader">
+        <h1>
+          <i>Let's get<br />start</i>
+        </h1>
+        <a href="createAccount.html">Sign Up</a>
+        <br />
+        <a href="index.html">Home</a>
+
+        <div class="contain3PartyAuthButton">
+          <div class="bt_welcome_googleAuth">
+            <button>Continue with Google</button>
+          </div>
+          <div class="bt_welcome_googleAuth">
+            <button>Continue with Facebook</button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section>
+      <nav></nav>
+
+      <div id="containLoginSection">
+        <h5>Login with email</h5>
+
+        <form id="LoginForm" name="WelcomeLogin">
+          <label for="userEmail">1 >></label>
+          <input type="text" id="userEmail" placeholder="Username or Email" />
+          <br />
+          <label for="password">2 >></label>
+          <input type="password" id="password" placeholder="password" />
+          <br />
+          <input type="checkbox" id="rememberUser" value="RememberPASSTrue" />
+          <label for="rememberUser" id="rememberUser">Remember</label>
+          <a id="forgetPassword" href="forgetPassword.html">Forget password?</a>
+          <br />
+          <input type="submit" value="Login" id="SubmitLogin" />
+          <br />
+          <label id="NoAccountSignUpLabel">Don't have an account? </label
+          ><a id="NoAccountSignUp" href="createAccount.html">Sign up</a>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
