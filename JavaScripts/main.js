@@ -1,9 +1,11 @@
-let slideIndex = 1;
+let slideIndex = 0;
+
 function onloadHome() {
   showSlides(slideIndex);
 }
 
 function showSlides(n) {
-  slides = document.getElementsByClassName("mySlides");
-  console.log(slides.);
+  let slides = document.getElementsByClassName("mySlides");
+  console.log(slides.length, slides);
+  slides.;
 }
