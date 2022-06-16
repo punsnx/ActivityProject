@@ -5,5 +5,5 @@ function onloadHome() {
 
 function showSlides(n) {
   slides = document.getElementsByClassName("mySlides");
-  document.getElementById("mySlides").style.display = "block";
+  console.log(slides.);
 }
