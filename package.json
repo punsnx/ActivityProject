@@ -1,0 +1,35 @@
+{
+  "name": "activityproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srztmx/ActivityProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srztmx/ActivityProject/issues"
+  },
+  "homepage": "https://github.com/srztmx/ActivityProject#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "chalk": "^5.0.1",
+    "debug": "^4.3.4",
+    "express": "^4.18.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "formidable": "^2.0.1",
+    "fs": "^0.0.1-security",
+    "mongodb": "^4.7.0",
+    "mongoose": "^6.4.1",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  }
+}
