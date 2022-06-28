@@ -4,6 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "DEBUG=app nodemon app.js;",
+    "debug": "DEBUG=* nodemon app.js;",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,8 +21,10 @@
   "homepage": "https://github.com/srztmx/ActivityProject#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "chalk": "^5.0.1",
+    "chalk": "^4.1.2",
     "debug": "^4.3.4",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
     "express": "^4.18.1",
     "express-flash": "^0.0.2",
     "express-session": "^1.17.3",
@@ -29,7 +33,16 @@
     "mongodb": "^4.7.0",
     "mongoose": "^6.4.1",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.18",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0"
+  },
+  "nodemonConfig": {
+    "restartable": "rs",
+    "delay": 1000,
+    "env": {
+      "port": 9999,
+      "dburl": "mongodb://localhost:27017"
+    }
   }
 }

@@ -20,7 +20,7 @@ function insertUser(req, res, hashedPassword) {
     }; 
     MongoClient.connect(url, function (err, db) {
         if (err) throw err; 
-        var dbo = db.db("FaceAttendance");
+        var dbo = db.db("ActivityProject");
         dbo.collection("users").insertOne(users, function (err, res) {
           if (err) throw err;
           console.log(users);
@@ -36,7 +36,7 @@ function insertUser(req, res, hashedPassword) {
 function findDuplicateData(item, data) {
     MongoClient.connect(url, function (err, db) {
         if (err) throw err; 
-        var dbo = db.db("FaceAttendance");
+        var dbo = db.db("ActivityProject");
         if (item == "email") {
         var query;
         } else if (item == "username") {

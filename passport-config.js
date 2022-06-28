@@ -10,7 +10,7 @@ function initialize(passport) {
     
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        var dbo = db.db("FaceAttendance");
+        var dbo = db.db("ActivityProject");
         var query = { email: email };     
         dbo.collection("users").find(query).toArray(async function(err, result) {
             if (err) throw err;
@@ -51,7 +51,7 @@ function initialize(passport) {
 function insertLastLogin(user, timestamp) {
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("FaceAttendance");
+    var dbo = db.db("ActivityProject");
     var userlogin = { studentID : user.studentID, name: user.name, timestamp: timestamp};
     dbo.collection("LastLogin").insertOne(userlogin, function(err, res) {
       if (err) throw err;
