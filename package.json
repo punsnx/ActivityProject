@@ -4,8 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "DEBUG=app nodemon app.js;",
-    "debug": "DEBUG=* nodemon app.js;",
+    "winstart": "set DEBUG=app & nodemon app.js;",
+    "windebug": "set DEBUG=* & nodemon app.js;",
+    "start": "node app.js;",
+    "mstart": "DEBUG=app nodemon app.js;",
+    "mdebug": "DEBUG=* nodemon app.js;",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,8 +23,11 @@
   },
   "homepage": "https://github.com/srztmx/ActivityProject#readme",
   "dependencies": {
+    "@google-cloud/storage": "^6.2.2",
+    "basic-ftp": "^4.6.6",
     "bcrypt": "^5.0.1",
     "chalk": "^4.1.2",
+    "cookie-parser": "^1.4.6",
     "debug": "^4.3.4",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
@@ -30,19 +36,24 @@
     "express-session": "^1.17.3",
     "formidable": "^2.0.1",
     "fs": "^0.0.1-security",
+    "ftp-client": "^0.2.2",
+    "http": "^0.0.1-security",
+    "method-override": "^3.0.0",
     "mongodb": "^4.7.0",
-    "mongoose": "^6.4.1",
+    "mongoose": "^6.4.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.18",
+    "nodemon": "^2.0.19",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "sharp": "^0.30.7",
+    "ssh2-sftp-client": "^9.0.1"
   },
   "nodemonConfig": {
     "restartable": "rs",
     "delay": 1000,
     "env": {
-      "port": 9999,
-      "dburl": "mongodb://localhost:27017"
+      "port": 8888
     }
   }
 }

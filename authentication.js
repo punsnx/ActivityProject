@@ -1,5 +1,5 @@
 var MongoClient = require("mongodb").MongoClient;
-var url = "mongodb://localhost:27017";
+var url = process.env.CON_DB;
 
 const { query } = require("express");
 const express = require("express");
@@ -16,11 +16,13 @@ function insertUser(req, res, hashedPassword) {
         class: req.body.authClass,
         room: req.body.authRoom,
         no: req.body.authNumber,
-        password: hashedPassword
+        password: hashedPassword,
+        profileFile: undefined,
+        role: "member"
     }; 
     MongoClient.connect(url, function (err, db) {
         if (err) throw err; 
-        var dbo = db.db("ActivityProject");
+        var dbo = db.db("FaceAttendance");
         dbo.collection("users").insertOne(users, function (err, res) {
           if (err) throw err;
           console.log(users);
@@ -33,10 +35,10 @@ function insertUser(req, res, hashedPassword) {
         alertauth: "Create Successfully",
     });
 }
-function findDuplicateData(item, data) {
+function findDuplicateData() {
     MongoClient.connect(url, function (err, db) {
         if (err) throw err; 
-        var dbo = db.db("ActivityProject");
+        var dbo = db.db("FaceAttendance");
         if (item == "email") {
         var query;
         } else if (item == "username") {
@@ -44,7 +46,7 @@ function findDuplicateData(item, data) {
             dbo.collection("users").find(query).toArray(function(err, result) {
                 if (err) throw err;
                 if (result != null) {
-                    return item +" duplicates"
+                    return " duplicates"
                 } else {
                     return null
                 }

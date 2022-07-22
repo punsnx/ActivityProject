@@ -1,0 +1,242 @@
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 500px) {
+  .containNAV {
+    display: block;
+  }
+  .containNAVmobile {
+    display: none;
+  }
+  .containNAVmobile a {
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    float: left;
+    padding: 30px;
+    background-color: rgb(255, 0, 230);
+    color: white;
+  }
+  .containNAVmobile a:hover { 
+    background-color: rgb(60, 0, 120);
+    cursor: pointer;
+  } 
+}
+@media screen and (min-width: 501px) {
+  .containNAV {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  .containNAV a {
+    text-decoration: none;
+    text-align: center;
+    width: 25%;
+    float: left;
+    padding: 30px;
+    background-color: rgb(0, 51, 255);
+    color: rgb(255, 255, 255);
+  }
+  .containNAV a:hover { 
+    background-color: rgb(0, 115, 255);
+    color: white;
+    cursor: pointer;
+  } 
+  .containNAVmobile {
+    display: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+  
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #00bbff;
+}
+  /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+nav {
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: 0 auto;
+  max-width: 100%;
+  overflow: auto;
+  position: fixed;
+  background-color: rgb(0, 207, 100);
+}
+.containMainBody {
+  margin-top: 100px;
+}
+.containIMG #Profile {
+  background-color: white;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  height: auto;
+  display: block;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+.profileDetails {
+  color: white;
+  margin-top: 50px;
+  width:  75%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: left;
+}
+#signupForm {
+  margin-top: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  border: 2px solid white;
+  border-radius: 50px;
+  padding: 25px;
+}
+#signinForm {
+  margin-top: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  border: 2px solid white;
+  border-radius: 50px;
+  padding: 25px;
+}
+#signupForm label {
+  margin-top: 10px;
+  display:  block;
+  color: white;
+}
+#signinForm label {
+  margin-top: 10px;
+  display:  block;
+  color: white;
+}
+#signupForm input {
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+  margin-top: 10px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 80%;
+  display: block;
+}
+#signinForm input {
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+  margin-top: 10px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 80%;
+  display: block;
+}
+  #SubmitAuth {
+    background-color: rgb(157, 229, 157);
+    border: 2px solid rgb(142, 255, 142);
+  } 
+  #SubmitLogin {
+    border: 2px solid rgb(142, 255, 142);
+    background-color: rgb(157, 229, 157);
+  }
+  #SubmitAuth:hover {
+    cursor: pointer;
+    background-color: rgb(63, 85, 63);
+  }
+  #SubmitLogin:hover {
+    cursor: pointer;
+    background-color: rgb(63, 85, 63);
+  }
+  #authFormTitle {
+    text-align: center;
+    font-size: 50px;
+  }
+  #loginFormTitle {
+    text-align: center;
+    font-size: 50px;
+  }
+  .showUsers {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .showUsers h4,p {
+    color: white;
+    text-align: center;
+  }
+  .logout input {
+    padding: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    background-color: rgb(255, 59, 59);
+    border-radius: 25px;
+    border: none;
+    color: white;
+  }
+  .logout input:hover {
+    cursor: pointer;
+    background-color: rgb(107, 23, 23);
+  }
+  #uploadProfileBT {
+    padding: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    background-color: rgb(116, 209, 137);
+    border-radius: 25px;
+    border: none;
+    color: white;
+  }
+  #uploadProfileBT:hover {
+    cursor: pointer;
+    background-color: rgb(52, 93, 61);
+  }
+  #deleteProfileBT {
+    margin-top: 20px;
+    padding: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 25px;
+    border: none;
+    color: white;
+  }
+  #deleteProfileBT:hover {
+    cursor: pointer;
+    background-color: rgb(52, 52, 52);
+  }
+  footer {
+    width: 100%;
+    height: 50px;
+    background-color: black;  
+  }
+  footer div {
+    background-color: red;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+  footer label {
+    color: white;
+    font-size: 20px;
+  }
+  

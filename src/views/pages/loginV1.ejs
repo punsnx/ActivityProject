@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><%- include('../partials/head.ejs'); %></head>
+<body onload="mainLoad();">
+    <div id = "app" >
+        <v-app
+            style=" background: #37E2D5"
+        >
+            <v-main>
+                <header><nav><%- include('../partials/nav.ejs'); %></nav></header>
+                <div
+                class="mx-auto mt-10"
+                
+                >
+                  <% if (messages.error) { %>
+                      <v-alert type="error" 
+                      width="70%"
+                      class="mx-auto rounded-xl"
+                      ><%= messages.error %></v-alert>
+                  <% } %>
+                </div>
+
+                <div>
+                  <v-card
+                  class="mx-auto rounded-xl mt-10"
+                  width="70%"
+                  prepend-icon="mdi-login"
+                  >
+                  <template v-slot:title>
+                    Authentication
+                  </template>
+                  <form
+                  name="signinForm"
+                  id="signinForm"
+                  action="/login"
+                  method="POST"
+                >
+                <v-text-field
+                class="ma-6"
+                label="E-mail"
+                required
+                prepend-inner-icon="mdi-email"
+                variant="outlined"
+                clearable
+                clear-icon="mdi-delete"
+                id="userEmail"
+                name="userEmail"
+                ></v-text-field>
+                <v-text-field
+                class="ma-6"
+                label="Password"
+                required
+                prepend-inner-icon="mdi-lock"
+                variant="outlined"
+                clearable
+                clear-icon="mdi-delete"
+                id="password"
+                name="password"
+                ></v-text-field>
+                  <div class="d-flex justify-center mb-6">
+                    <v-btn
+                    color="black"
+                    class="mr-4"
+                    type="submit"
+                    >
+                    login
+                    <v-icon
+                    end
+                    icon="mdi-checkbox-marked-circle"
+                    ></v-icon>
+                    </v-btn>   
+                    <v-btn 
+                    @click="goauth()"
+                    color="black"
+                    class="mr-4"
+                    >
+                      No Account
+                    </v-btn>
+                    <v-btn 
+                    @click="goforgetpassword()"
+                    color="black"
+                    class="mr-4"
+                    >
+                      ForgetPassword
+                    </v-btn>
+
+                  </div>
+                </form>
+                  </v-card>
+                </div>
+            </v-main>
+        </v-app>
+
+    </div>
+
+    <%- include('../partials/footer.ejs'); %>
+    <script>
+
+        const vuetify = Vuetify.createVuetify();
+        const app = Vue.createApp({
+          data: () => ({
+
+          }),
+          methods: {
+            goauth() {
+              window.location.href = '/auth';
+            },
+            goforgetpassword() {
+              window.location.href = '/';
+            },
+          },
+        });
+  
+        app.use(vuetify).mount("#app");
+      </script>
+</body>
+</html>

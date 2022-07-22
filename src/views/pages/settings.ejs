@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head.ejs'); %>
+  </head>
+  <body onload="mainLoad();">
+    <div id="app">
+      <v-app style="background: #37e2d5">
+        <v-main>
+          <%- include('../partials/nav.ejs'); %>
+          <div>
+            <!-- WAIT -->
+            <v-form>
+              <v-card class="mx-auto rounded-xl mt-10" width="70%"
+                ><h1>S</h1></v-card
+              >
+              <v-card class="mx-auto rounded-xl mt-10" width="70%"
+                ><h1>S</h1></v-card
+              >
+              <v-card class="mx-auto rounded-xl mt-10" width="70%"
+                ><h1>S</h1></v-card
+              >
+            </v-form>
+          </div>
+        </v-main>
+      </v-app>
+    </div>
+
+    <%- include('../partials/footer.ejs'); %>
+    <script>
+      var x;
+      const vuetify = Vuetify.createVuetify();
+      const app = Vue.createApp({
+        theme: {
+          defaultTheme: "dark",
+        },
+        data() {
+          return {
+            // DATA HERE
+          };
+        },
+        methods: {
+          // METHODS HERE
+        },
+      });
+
+      app.use(vuetify).mount("#app");
+    </script>
+  </body>
+</html>

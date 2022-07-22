@@ -1,48 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Authentication</title>
     <%- include('../partials/head.ejs'); %>
-    <script src="/JS/auth.js"></script>
   </head>
+  <body onload="mainLoad();">
+    <div id="app">
+      <v-app style="background: #37e2d5">
+        <v-main>
+          <%- include('../partials/nav.ejs'); %>
+          <div class="mx-auto mt-10">
+            <% if (alertauth != "") { %>
+            <v-alert type="error" width="70%" class="mx-auto rounded-xl"
+              ><%=alertauth%></v-alert
+            >
+            <% } %>
+          </div>
+          <div>
+            <v-card
+              class="mx-auto rounded-xl mt-10"
+              width="70%"
+              prepend-icon="mdi-login"
+            >
+              <template v-slot:title> Create Account </template>
+              <v-form
+                ref="form"
+                v-model="valid"
+                lazy-validation
+                action="/auth"
+                method="POST"
+              >
+                <!-- EMAIL -->
+                <v-text-field
+                  class="ma-6"
+                  v-model="email"
+                  :rules="emailRules"
+                  label="E-mail"
+                  required
+                  prepend-inner-icon="mdi-email"
+                  variant="outlined"
+                  clearable
+                  clear-icon="mdi-delete"
+                  id="authEmail"
+                  name="authEmail"
+                ></v-text-field>
+                <!-- USERNAME -->
+                <v-text-field
+                  class="ma-6"
+                  v-model="username"
+                  :rules="usernameRules"
+                  label="Username"
+                  required
+                  prepend-inner-icon="mdi-account"
+                  variant="outlined"
+                  clearable
+                  clear-icon="mdi-delete"
+                  id="authUsername"
+                  name="authUsername"
+                ></v-text-field>
+                <!-- PASSWORD -->
+                <v-text-field
+                  type="password"
+                  class="ma-6"
+                  v-model="password"
+                  :counter="64"
+                  :rules="passwordRules"
+                  label="Password"
+                  required
+                  prepend-inner-icon="mdi-lock"
+                  variant="outlined"
+                  clearable
+                  clear-icon="mdi-delete"
+                  id="authPassword"
+                  name="authPassword"
+                ></v-text-field>
+                <!-- CONFIRM PASSWORD -->
+                <v-text-field
+                  type="password"
+                  class="ma-6"
+                  v-model="cfpassword"
+                  :counter="64"
+                  :rules="cfpasswordRules"
+                  label="Confirm Password"
+                  required
+                  prepend-inner-icon="mdi-lock"
+                  variant="outlined"
+                  clearable
+                  clear-icon="mdi-delete"
+                  id="authCDPassword"
+                  name="authCFPassword"
+                ></v-text-field>
 
-  <body onload="mainLoad(); onloadauth();">
+                <div class="d-flex justify-center mb-6">
+                  <v-btn
+                    color="black"
+                    class="mr-4"
+                    @click="validate"
+                    type="submit"
+                  >
+                    Create
+                    <v-icon end icon="mdi-checkbox-marked-circle"></v-icon>
+                  </v-btn>
+                  <v-btn @click="gologin" class="mr-4" color="black">
+                    Signin
+                    <v-icon end icon="mdi-account-plus"></v-icon>
+                  </v-btn>
+                </div>
+              </v-form>
+            </v-card>
+          </div>
+        </v-main>
+      </v-app>
+    </div>
 
-    <header></header>
-    <section>
-      <nav><%- include('../partials/nav.ejs'); %></nav>
-      <div class="containMainBody">
-        <div class="containAuth">
-          <form name="signupForm" id="signupForm" action="/auth" method="POST"">
-            <h1><%=alertauth%></h1>
-            <label id="authFormTitle">Create your account</label>
-            <label for="authEmail">Enter Email</label>
-            <input type="text" id="authEmail" name="authEmail" placeholder="Email" required/>
-            <label for="authUsername">Enter Username</label>
-            <input type="text" id="authUsername" name="authUsername" placeholder="Username" required/>
-            <label for="authStudentID">Enter StudentID</label>
-            <input type="text" id="authStudentID" name="authStudentID" placeholder="StudentID" required/>
-            <label for="authFname">Enter FirstName</label>
-            <input type="text" id="authFname" name="authFname" placeholder="Firstname" required/>
-            <label for="authLname">Enter Lastname</label>
-            <input type="text" id="authLname" name="authLname" placeholder="Lastname" required/>
-            <label for="authClass">Enter Class</label>
-            <input type="text" id="authClass" name="authClass" placeholder="Class" required/>
-            <label for="authRoom">Enter Room</label>
-            <input type="text" id="authRoom" name="authRoom" placeholder="Room" required/>
-            <label for="authNumber">Enter Number</label>
-            <input type="text" id="authNumber" name="authNumber" placeholder="Number" required/>
-            <label for="authPassword">Enter Password</label>
-            <input type="password" id="authPassword" name="authPassword" placeholder="Password" required/>
-            <label for="authCFPassword">Enter Password Again</label>
-            <input type="password" id="authCFPassword" name="authCFPassword" placeholder="Password" required/>
-            <input type="submit" value="Create Account" id="SubmitAuth" />
-            <label id="haveAccountLoginLabel">Already have an account? </label
-            ><a id="haveAccountLogin" >Sign in</a>
-          </form>
-          <p id="showdataA" style="color: white;"></p>
-        </div>
-      </div>
-    </section>
+    <%- include('../partials/footer.ejs'); %>
+    <script>
+      var x;
+      const vuetify = Vuetify.createVuetify();
+      const app = Vue.createApp({
+        data: () => ({
+          valid: true,
+          password: "",
+          passwordRules: [
+            (v) => !!v || "Password is required",
+            (v) =>
+              (v && v.length <= 64) ||
+              "Password must be less than 64 characters",
+          ],
+          cfpassword: "",
+          cfpasswordRules: [
+            (v) => !!v || "Confirm Password is required",
+            (v) =>
+              (v && v.length <= 64) ||
+              "Confirm Password must be less than 64 characters",
+          ],
+          email: "",
+          emailRules: [
+            (v) => !!v || "E-mail is required",
+            (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+          ],
+          username: "",
+          usernameRules: [(v) => !!v || "Username is required"],
+        }),
+
+        methods: {
+          validate() {
+            this.$refs.form.validate();
+          },
+          reset() {
+            this.$refs.form.reset();
+          },
+          resetValidation() {
+            this.$refs.form.resetValidation();
+          },
+          gologin() {
+            window.location.href = "/login";
+          },
+        },
+      });
+
+      app.use(vuetify).mount("#app");
+    </script>
   </body>
 </html>

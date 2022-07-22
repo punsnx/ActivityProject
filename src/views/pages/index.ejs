@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><%- include('../partials/head.ejs'); %></head>
+    <head><%- include('../partials/head.ejs'); %></head>
+<body onload="mainLoad();">
+    <div id = "app" >
+        <v-app
+            style=" background: #37E2D5"
+        >
+            <v-main>
+                <%- include('../partials/nav.ejs'); %>
+                <h1 style="color:rgb(255, 255, 255)"><%= name %></h1>
+                <div>
+                    <v-card
+                    class="mx-auto rounded-xl text-center"
+                    color="red"
+                    width="70%"
+                    title="topics"
+                  ></v-card>
+                </div>
+            </v-main>
+        </v-app>
 
-  <body onload="mainLoad();">
-    <header>
-      <div class="containTopStatus">
-        <label>Home | Not Share</label>
-        <button>Clear</button>>
-      </div>
+    </div>
 
-    </header>
-    <section>
-      <div class="containMainBody">
-        <div class="topsection">
-          <div class="containTopic">
-            <label>Topics</label>
-            <button>Movie</button>
-            <button>Game</button>
-            <button>Sport</button>
-            <button>Food</button>
-            <button>Hangout</button>
-          </div>
-          <div class="containGoogleMap">
-            <canvas id="Map" style="width: 70%; height: 200px; border: 1px solid black;"></canvas>
-          </div>
-        </div>
-        <div class="topsection">
-          
-        </div>
-
-      </div>
-    </section>
-    <footer><nav><%- include('../partials/nav.ejs'); %></nav></footer>
-  </body>
+    <%- include('../partials/footer.ejs'); %>
+    <script>
+        var x;
+        const vuetify = Vuetify.createVuetify();
+        const app = Vue.createApp({
+          theme: {
+            defaultTheme: "dark"
+          },  
+          data() {
+            return {
+              // DATA HERE
+            };
+          },
+          methods: {
+            // METHODS HERE
+          },
+        });
+  
+        app.use(vuetify).mount("#app");
+      </script>
+</body>
 </html>

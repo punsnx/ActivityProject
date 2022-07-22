@@ -2,7 +2,7 @@ const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt');
 const { query } = require('express');
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = process.env.CON_DB;
 
 
 function initialize(passport) {
@@ -10,7 +10,7 @@ function initialize(passport) {
     
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        var dbo = db.db("ActivityProject");
+        var dbo = db.db("FaceAttendance");
         var query = { email: email };     
         dbo.collection("users").find(query).toArray(async function(err, result) {
             if (err) throw err;
@@ -51,7 +51,7 @@ function initialize(passport) {
 function insertLastLogin(user, timestamp) {
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("ActivityProject");
+    var dbo = db.db("FaceAttendance");
     var userlogin = { studentID : user.studentID, name: user.name, timestamp: timestamp};
     dbo.collection("LastLogin").insertOne(userlogin, function(err, res) {
       if (err) throw err;
@@ -61,4 +61,4 @@ function insertLastLogin(user, timestamp) {
   });
 }
 
-module.exports = initialize
+module.exports = initialize;
